@@ -17,14 +17,19 @@ public class CustomRealmTest {
     public void test() {
         // 创建安全管理器
         DefaultSecurityManager defaultSecurityManager = new DefaultSecurityManager();
+
         // 设置realm
         defaultSecurityManager.setRealm(new CustomRealm());
+
         // 将安全管理器注入安全工具类
         SecurityUtils.setSecurityManager(defaultSecurityManager);
+
         // 获取subject对象
         Subject subject = SecurityUtils.getSubject();
+
         // 创建令牌
         UsernamePasswordToken token = new UsernamePasswordToken("Chauncey", "123456");
+
         // 用户认证
         try {
             subject.login(token);
