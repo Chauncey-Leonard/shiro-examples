@@ -29,6 +29,11 @@ public class CustomRealm extends AuthorizingRealm {
         String principal = (String) authenticationToken.getPrincipal();
         // 根据用户名查询数据库
         if ("Chauncey".equals(principal)) {
+            /*
+             * 参数一: 返回数据库中的用户名
+             * 参数二: 数据库中的密码
+             * 参数三: 当前realm的名称
+             */
             return new SimpleAuthenticationInfo(principal, "123456", this.getName());
         }
         return null;
