@@ -1,18 +1,33 @@
 package org.example;
 
-import static org.junit.Assert.assertTrue;
-
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.junit.Test;
 
-/**
- * Unit test for simple App.
- */
 public class AppTest {
     /**
-     * Rigorous Test :-)
+     * MD5
      */
     @Test
-    public void shouldAnswerWithTrue() {
-        assertTrue(true);
+    public void MD5() {
+        Md5Hash md5Hash = new Md5Hash("123456");
+        System.out.println(md5Hash.toHex());
+    }
+
+    /**
+     * MD5 + Salt
+     */
+    @Test
+    public void MD5WithSalt() {
+        Md5Hash md5Hash = new Md5Hash("123456", "x0*7ps");
+        System.out.println(md5Hash.toHex());
+    }
+
+    /**
+     * MD5 + Salt + Hash
+     */
+    @Test
+    public void MD5WithSaltAndHash() {
+        Md5Hash md5Hash = new Md5Hash("123456", "x0*7ps", 1024);
+        System.out.println(md5Hash.toHex());
     }
 }
