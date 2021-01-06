@@ -24,6 +24,9 @@ public class CustomMD5RealmTest {
         // 设置算法名称
         credentialsMatcher.setHashAlgorithmName("md5");
 
+        // 设置hash散列
+        credentialsMatcher.setHashIterations(1024);
+
         // 设置realm使用hash凭证匹配器
         realm.setCredentialsMatcher(credentialsMatcher);
 
