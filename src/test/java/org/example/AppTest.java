@@ -3,6 +3,12 @@ package org.example;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.junit.Test;
 
+/**
+ * MD5
+ * 作用: 一般用来加密或者签名
+ * 特点: MD算法不可逆, 内容相同无论执行多少次MD5生成的结果始终一致
+ * 结果: 始终是一个16进制的32位长度的字符串
+ */
 public class AppTest {
     /**
      * MD5
