@@ -7,6 +7,7 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 
 /**
  * 自定义MD5 realm
@@ -28,13 +29,29 @@ public class CustomMD5Realm extends AuthorizingRealm {
         // 从token中获取用户名
         String principal = (String) authenticationToken.getPrincipal();
         if ("Chauncey".equals(principal)) {
+            // salt
+            String salt = "x0*7ps";
+
             // MD5
-            String password = "e10adc3949ba59abbe56e057f20f883e";
+            // String password = "e10adc3949ba59abbe56e057f20f883e";
+
             // MD5 + Salt
-            // String passwordWithSalt = "5f9dcb70720b6f58a2b219015fad5c30";
+            // String password = "5f9dcb70720b6f58a2b219015fad5c30";
+
             // MD5 + Salt + Hash
-            // String passwordWithSaltAndHash = "14b9f6ecccb925f15cf92c44ff9326ce";
-            return new SimpleAuthenticationInfo(principal, password, this.getName());
+            String password = "14b9f6ecccb925f15cf92c44ff9326ce";
+
+            /*
+             * 参数一: 数据库用户名
+             * 参数二: 数据库密码(md5/md5 + salt/md5 + salt + hash)
+             * 参数三: 注册时的随机盐
+             * 参数四: 自定义realm名字
+             * */
+            return new SimpleAuthenticationInfo(
+                    principal,
+                    password,
+                    ByteSource.Util.bytes(salt),
+                    this.getName());
         }
         return null;
     }
