@@ -51,7 +51,8 @@ public class CustomMD5Realm extends AuthorizingRealm {
                     principal,
                     password,
                     ByteSource.Util.bytes(salt),
-                    this.getName());
+                    this.getName()
+            );
         }
         return null;
     }
