@@ -79,6 +79,9 @@ public class CustomMD5RealmTest {
             for (boolean b : permitted) {
                 System.out.println("b = " + b);
             }
+
+            // 同时具有哪些权限
+            System.out.println(subject.isPermittedAll("user:*:01", "product:create"));
         }
     }
 }
