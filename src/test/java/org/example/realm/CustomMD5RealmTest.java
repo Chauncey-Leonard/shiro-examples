@@ -61,6 +61,12 @@ public class CustomMD5RealmTest {
 
             // 基于多角色权限控制
             System.out.println(subject.hasAllRoles(Arrays.asList("admin", "user")));
+
+            // 是否具有其中的一个角色
+            boolean[] booleans = subject.hasRoles(Arrays.asList("admin", "user", "super"));
+            for (boolean aBoolean : booleans) {
+                System.out.println("aBoolean = " + aBoolean);
+            }
         }
     }
 }
