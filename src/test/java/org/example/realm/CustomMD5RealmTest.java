@@ -9,6 +9,8 @@ import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.subject.Subject;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 public class CustomMD5RealmTest {
     @Test
     public void test() {
@@ -50,6 +52,15 @@ public class CustomMD5RealmTest {
             System.out.println("用户名不存在！");
         } catch (IncorrectCredentialsException e) {
             System.out.println("密码错误！");
+        }
+
+        // 认证用户进行授权
+        if (subject.isAuthenticated()) {
+            // 基于角色权限控制
+            System.out.println(subject.hasRole("admin"));
+
+            // 基于多角色权限控制
+            System.out.println(subject.hasAllRoles(Arrays.asList("admin", "user")));
         }
     }
 }
