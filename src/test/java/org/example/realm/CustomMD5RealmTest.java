@@ -67,6 +67,11 @@ public class CustomMD5RealmTest {
             for (boolean aBoolean : booleans) {
                 System.out.println("aBoolean = " + aBoolean);
             }
+
+            System.out.println("================== 权限 ======================");
+
+            // 基于权限字符串的访问控制 资源标识符:操作:资源类型
+            System.out.println(subject.isPermitted("user:*:01"));
         }
     }
 }
