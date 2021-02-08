@@ -5,6 +5,7 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
@@ -18,7 +19,16 @@ public class CustomMD5Realm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        return null;
+        String principal = (String) principalCollection.getPrimaryPrincipal();
+
+        // 根据当前用户信息，获取当前用户的角色信息以及权限信息
+        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+
+        // 将从数据库中查询到的角色信息赋值给权限对象
+        simpleAuthorizationInfo.addRole("user");
+        simpleAuthorizationInfo.addRole("admin");
+
+        return simpleAuthorizationInfo;
     }
 
     /**
