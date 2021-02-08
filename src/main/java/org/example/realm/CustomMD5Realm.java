@@ -30,6 +30,7 @@ public class CustomMD5Realm extends AuthorizingRealm {
 
         // 将数据库中查询到的权限信息赋值给权限对象
         simpleAuthorizationInfo.addStringPermission("user:*:01");
+        simpleAuthorizationInfo.addStringPermission("product:create");
         return simpleAuthorizationInfo;
     }
 

@@ -72,6 +72,7 @@ public class CustomMD5RealmTest {
 
             // 基于权限字符串的访问控制 资源标识符:操作:资源类型
             System.out.println(subject.isPermitted("user:*:01"));
+            System.out.println(subject.isPermitted("product:create"));
         }
     }
 }
