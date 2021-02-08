@@ -6,10 +6,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>shiro-examples</artifactId>
+    <artifactId>shiro-example</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-    <name>shiro-examples</name>
+    <name>shiro-example</name>
     <url>https://github.com/Chauncey-Leonard/shiro-examples</url>
 
     <properties>
