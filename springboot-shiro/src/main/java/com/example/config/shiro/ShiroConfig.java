@@ -14,23 +14,33 @@ import org.springframework.context.annotation.Configuration;
 public class ShiroConfig {
 
     /**
-     * 1.创建shiroFilter主要用于拦截所有请求
+     * 3.创建shiroFilter主要用于拦截所有请求
      */
     @Bean
-    public ShiroFilterFactoryBean getShiroFilterFactoryBean() {
-        return new ShiroFilterFactoryBean();
+    public ShiroFilterFactoryBean shiroFilterFactoryBean(DefaultWebSecurityManager defaultWebSecurityManager) {
+        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+        // 设置安全管理器
+        shiroFilterFactoryBean.setSecurityManager(defaultWebSecurityManager);
+        return shiroFilterFactoryBean;
     }
 
     /**
      * 2.创建安全管理器
      */
     @Bean
-    public DefaultWebSecurityManager getDefaultSecurityManager() {
-        return new DefaultWebSecurityManager();
+    public DefaultWebSecurityManager defaultWebSecurityManager(CustomRealm customRealm) {
+        DefaultWebSecurityManager defaultWebSecurityManager = new DefaultWebSecurityManager();
+        // 关联自定义realm
+        defaultWebSecurityManager.setRealm(customRealm);
+        return defaultWebSecurityManager;
     }
 
     /**
-     * 3.创建自定义realm
+     * 1.创建自定义realm
      */
+    @Bean
+    public CustomRealm customRealm() {
+        return new CustomRealm();
+    }
 
 }
