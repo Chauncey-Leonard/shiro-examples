@@ -5,6 +5,9 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * shiro配置类
  * <p>
@@ -20,7 +23,19 @@ public class ShiroConfig {
     public ShiroFilterFactoryBean shiroFilterFactoryBean(DefaultWebSecurityManager defaultWebSecurityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         // 设置安全管理器
+
+        /*
+         * 添加 shiro 的内置过滤器
+         * anon：无需认证
+         * authc：必须认证
+         * user：必须拥有记住我功能才可以使用
+         * perms：拥有对某个资源的权限
+         * role：拥有某个角色才可以访问
+         */
+        Map<String, String> filterChainDefinitionMap = new HashMap<>();
+
         shiroFilterFactoryBean.setSecurityManager(defaultWebSecurityManager);
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
 
