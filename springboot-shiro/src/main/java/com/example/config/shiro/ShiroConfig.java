@@ -22,7 +22,6 @@ public class ShiroConfig {
     @Bean
     public ShiroFilterFactoryBean shiroFilterFactoryBean(DefaultWebSecurityManager defaultWebSecurityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-        // 设置安全管理器
 
         /*
          * 添加 shiro 的内置过滤器
@@ -33,7 +32,7 @@ public class ShiroConfig {
          * role：拥有某个角色才可以访问
          */
         Map<String, String> filterChainDefinitionMap = new HashMap<>();
-
+        // 设置安全管理器
         shiroFilterFactoryBean.setSecurityManager(defaultWebSecurityManager);
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
